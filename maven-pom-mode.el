@@ -133,15 +133,15 @@
   "Do search against search.maven.org for SEARCH-TERM"
   (maven-pom-search-get-json 
    (url-generic-parse-url 
-    (concat maven-pom-search-maven-org-url "/solrsearch/select?q=\"" 
-            search-term "\"&rows=20&wt=json"))))
+    (concat maven-pom-search-maven-org-url "/solrsearch/select?q=" 
+            search-term "&rows=20&wt=json"))))
 
 (defun maven-pom-search-for-versions (groupId artifactId)
   "Given GROUPID and ARTIFACTID, return list of all available versions"
   (maven-pom-search-get-json 
    (url-generic-parse-url
-    (concat maven-pom-search-maven-org-url "/solrsearch/select?q=g:\"" groupId 
-            "\"+AND+a:\"" artifactId "\"&core=gav&rows=20&wt=json"))))
+    (concat maven-pom-search-maven-org-url "/solrsearch/select?q=g:" groupId 
+            "+AND+a:" artifactId "&core=gav&rows=20&wt=json"))))
 
 (defun maven-pom-search-json-to-vector (json)
   "Convert json into a vector. Use getters to extract info from vector"
